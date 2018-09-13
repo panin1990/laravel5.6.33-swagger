@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  *     @SWG\Property(
  *          property="content",
  *          type="object",
- *          description="content of section (JSON fromat)",
- *          example="{title:'test page title'}"
+ *          description="content of section (JSON.stringify fromat!!!)",
+ *          example={"test":"test"}
  *    ))
  */
 
