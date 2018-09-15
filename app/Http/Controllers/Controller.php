@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 /**
  * @SWG\Swagger(
  *     schemes={"http","https"},
- *     host="apiproject.loc",
  *     basePath="/",
  *     @SWG\Info(
  *         version="1.0.0",
