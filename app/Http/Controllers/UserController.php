@@ -22,7 +22,7 @@ class UserController extends Controller
             foreach($user->tokens as $token) {
                 $token->revoke();
             }
-            $success['token'] =  $user->createToken('userPrivateToken')-> accessToken;
+            $success['token'] =  $user->createToken('userPrivateToken')->accessToken;
             return response()->json(['success' => $success], $this-> successStatus);
         }
         else{
@@ -121,5 +121,10 @@ class UserController extends Controller
         $user->scopes()->detach($request->all()['scopes']);
         $user = $user->fresh();
         return response()->json($user);
+    }
+
+    public function getScopes()
+    {
+
     }
 }

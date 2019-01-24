@@ -35,12 +35,13 @@ Route::post('roles/detachScope', 'RolesController@detachScope')->middleware('aut
 
 Route::group(['prefix' => 'scopes','middleware' => 'auth:api'], restApiCrudRoutes('ScopesController'));
 
-Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function() {
-    Route::post('details', 'UserController@details');
-    Route::post('login', 'UserController@login');
+
+Route::group(['prefix' => 'user'], function() {
     Route::post('register', 'UserController@register');
-    Route::post('attachRole', 'UserController@attachRole');
-    Route::post('detachRole', 'UserController@detachRole');
-    Route::post('attachScope', 'UserController@attachScope');
-    Route::post('detachScope', 'UserController@detachScope');
+    Route::post('login', 'UserController@login');
+    Route::post('details', 'UserController@details')->middleware('auth:api');
+    Route::post('attachRole', 'UserController@attachRole')->middleware('auth:api');
+    Route::post('detachRole', 'UserController@detachRole')->middleware('auth:api');
+    Route::post('attachScope', 'UserController@attachScope')->middleware('auth:api');
+    Route::post('detachScope', 'UserController@detachScope')->middleware('auth:api');
 });
