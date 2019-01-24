@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Response;
+use Validator;
 
 abstract class BaseControllerAbstractClass extends Controller {
 
@@ -21,7 +22,7 @@ abstract class BaseControllerAbstractClass extends Controller {
     protected $modelClass;
     protected $validateRules;
 
-    private function validateRequest(Request $request, string $functionName)
+    protected function validateRequest(Request $request, string $functionName)
     {
         if (isset ($this->validateRules[$functionName])) {
             $this->validate($request, $this->validateRules[$functionName]);
@@ -35,7 +36,7 @@ abstract class BaseControllerAbstractClass extends Controller {
         return response()->json($newItem);
     }
 
-    public function update(Request $request, number $id)
+    public function update(Request $request, int $id)
     {
         $this->validateRequest($request, __FUNCTION__);
         $item = $this->modelClass::findOrFail($id);

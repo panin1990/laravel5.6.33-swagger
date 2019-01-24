@@ -27,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    protected $with = ['roles', 'scopes'];
+
+
+    public function roles() {
+        return $this->belongsToMany('App\Models\Permissions\Role');
+    }
+
+    public function scopes() {
+        return $this->belongsToMany('App\Models\Permissions\Scope');
+    }
 }
